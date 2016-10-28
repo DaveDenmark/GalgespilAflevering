@@ -2,13 +2,19 @@ package com.example.id.galgespilaflevering;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.ImageView;
+
 
 public class hovedmenu extends Activity implements View.OnClickListener {
 
-        Button LaunchGame, Highscore, HelpText, QuitGame;
+        Button LaunchGame, QuitGame;
+        ImageView imageView, imageView2;
+
 
 
         @Override
@@ -16,14 +22,23 @@ public class hovedmenu extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hovedmenu);
 
+
             LaunchGame = (Button) findViewById(R.id.LaunchGame);
-            Highscore = (Button) findViewById(R.id.Highscore);
-            HelpText = (Button) findViewById(R.id.HelpText);
+            LaunchGame.setText("Start spil");
+            LaunchGame.setTextColor(Color.parseColor("#ff0000ff"));
+
             QuitGame = (Button) findViewById(R.id.QuitGame);
+            QuitGame.setText("Afslut spil");
+            QuitGame.setTextColor(Color.parseColor("#ff0000ff"));
+
+
+            imageView = (ImageView) findViewById(R.id.imageView2);
+            imageView.setImageResource(R.drawable.forkert6);
+
+            imageView2 = (ImageView) findViewById(R.id.imageView3);
+            imageView2.setImageResource(R.drawable.galgespil);
 
             LaunchGame.setOnClickListener(this);
-            Highscore.setOnClickListener(this);
-            HelpText.setOnClickListener(this);
             QuitGame.setOnClickListener(this);
     }
 
@@ -31,14 +46,6 @@ public class hovedmenu extends Activity implements View.OnClickListener {
         public void onClick(View v) {
             if (v == LaunchGame) {
                 Intent i = new Intent(this, GameLaunch.class);
-                startActivity(i);
-            }
-            else if (v == Highscore) {
-                Intent i = new Intent(this, Score.class);
-                startActivity(i);
-            }
-            else if (v == HelpText) {
-                Intent i = new Intent(this, HelpView.class);
                 startActivity(i);
             }
             else if (v == QuitGame) {

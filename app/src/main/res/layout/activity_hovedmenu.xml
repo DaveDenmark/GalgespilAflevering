@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_hovedmenu"
     android:layout_width="match_parent"
@@ -10,39 +11,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.id.galgespilaflevering.hovedmenu">
 
-    <Button
-        android:text="Launch Game"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:id="@+id/LaunchGame"
+        app:srcCompat="@drawable/galgespil"
+        android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
 
     <Button
-        android:text="Quit Game"
+        android:text="@string/afslut_spil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/QuitGame"
-        android:layout_alignTop="@+id/HelpText"
+        android:layout_marginRight="47dp"
+        android:layout_marginEnd="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="29dp"
+        tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:text="@string/launchgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LaunchGame"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_alignBaseline="@+id/QuitGame"
+        android:layout_alignBottom="@+id/QuitGame"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        app:srcCompat="@drawable/forkert6"
+        android:id="@+id/imageView2"
+        android:layout_height="370dp"
+        android:layout_width="400dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image"
+        android:layout_above="@+id/LaunchGame"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp" />
-
-    <Button
-        android:text="Highscore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Highscore"
-        android:layout_below="@+id/LaunchGame"
-        android:layout_alignLeft="@+id/HelpText"
-        android:layout_alignStart="@+id/HelpText"
-        android:layout_marginTop="12dp" />
-
-    <Button
-        android:text="Help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/HelpText"
-        android:layout_below="@+id/Highscore"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="25dp" />
 </RelativeLayout>

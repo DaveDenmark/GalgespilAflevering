@@ -11,64 +11,63 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.id.galgespilaflevering.GameLaunch">
 
-    <TableLayout
+    <TextView
+        android:text="@string/infotekst"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/InfoTekst"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
-    <Button
-        android:text="Play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Skriv et bogstav her:"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_above="@+id/button"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="200dp"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Skriv et bogstav her"
+        android:ems="10"
+        android:id="@+id/editText"
+        tools:ignore="HardcodedText"
+        android:layout_height="50dp"
+        android:layout_above="@+id/button2"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/button3"
+        android:layout_marginBottom="29dp" />
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         app:srcCompat="@drawable/galge"
         android:id="@+id/imageView"
+        android:contentDescription=""
+        tools:ignore="ContentDescription"
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="Velkommen til Spil siden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/InfoTekst"
-        android:layout_above="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp" />
+    <Button
+        android:text="@string/play"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/hj_lp"
+        android:layout_height="50dp"
+        android:id="@+id/button2"
+        android:layout_width="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/nyt_ord"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

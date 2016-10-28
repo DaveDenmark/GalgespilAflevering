@@ -56,12 +56,12 @@ public class Galgelogik {
   public Galgelogik() {
     muligeOrd.add("abe");
     muligeOrd.add("kartofler");
-    muligeOrd.add("programmering");
-    muligeOrd.add("motorvej");
-    muligeOrd.add("busrute");
+    muligeOrd.add("hest");
+    muligeOrd.add("landbrug");
+    muligeOrd.add("sukkertop");
     muligeOrd.add("gangsti");
-    muligeOrd.add("skovsnegl");
-    muligeOrd.add("solsort");
+    muligeOrd.add("jolle");
+    muligeOrd.add("slange");
     nulstil();
   }
 
