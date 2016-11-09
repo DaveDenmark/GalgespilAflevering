@@ -1,10 +1,12 @@
-package com.example.id.galgespilaflevering;
+package com.example.id.galgespilaflevering.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.id.galgespilaflevering.R;
 
 public class HelpView extends Activity {
         TextView textView;

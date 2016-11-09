@@ -105,7 +105,7 @@ public class Galgelogik {
       sidsteBogstavVarKorrekt = false;
       System.out.println("Bogstavet var IKKE korrekt: " + bogstav);
       antalForkerteBogstaver = antalForkerteBogstaver + 1;
-      if (antalForkerteBogstaver > 6) {
+      if (antalForkerteBogstaver >= 6) {
         spilletErTabt = true;
       }
     }
@@ -140,11 +140,12 @@ public class Galgelogik {
     System.out.println("data = " + data);
 
     data = data.replaceAll("<.+?>", " ").toLowerCase().replaceAll("[^a-zæøå]", " ");
+    data = data.replaceAll(" [a-zæøå] "," "); // fjern 1-bogstavsord
+    data = data.replaceAll(" [a-zæøå][a-zæøå] "," "); // fjern 2-bogstavsord
+
     System.out.println("data = " + data);
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
-
     System.out.println("muligeOrd = " + muligeOrd);
-    nulstil();
   }
 }

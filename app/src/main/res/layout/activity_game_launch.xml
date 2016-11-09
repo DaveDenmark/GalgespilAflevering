@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.id.galgespilaflevering.GameLaunch">
+    tools:context="com.example.id.galgespilaflevering.Activities.GameLaunch">
 
     <TextView
         android:text="@string/infotekst"
@@ -33,16 +33,6 @@
         android:layout_toLeftOf="@+id/button3"
         android:layout_toStartOf="@+id/button3"
         android:layout_marginBottom="29dp" />
-
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        app:srcCompat="@drawable/galge"
-        android:id="@+id/imageView"
-        android:contentDescription=""
-        tools:ignore="ContentDescription"
-        android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/play"
@@ -69,5 +59,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/galge"
+        android:id="@+id/imageView"
+        android:contentDescription=""
+        tools:ignore="ContentDescription"
+        android:layout_below="@+id/InfoTekst"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginTop="26dp" />
 
 </RelativeLayout>
