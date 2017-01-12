@@ -19,11 +19,10 @@ import com.example.id.galgespilaflevering.logik.Galgelogik;
 public class GameLaunch extends Activity implements View.OnClickListener {
 
     Galgelogik logik = new Galgelogik();
-    private TextView Info;
+    private TextView Info, Info2;
     private Button Play, HelpText, Nytspil;
-    private EditText TextInsert;
+    private EditText Textedit;
     private ImageView imagestatus;
-    Galgelogik galgelogik;
     ProgressDialog pd;
     
 
@@ -31,7 +30,10 @@ public class GameLaunch extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_launch);
-        galgelogik = new Galgelogik();
+        logik.nulstil();
+        getAsyncWords();
+
+        //Preference setup
         SharedPreferences game_startup =
                 PreferenceManager.getDefaultSharedPreferences(this);
         int intValue = game_startup.getInt("intValue", 0);
@@ -39,10 +41,15 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         editor.putInt("intValue", ++intValue);
         editor.commit();
 
+
+
         Info = (TextView) findViewById(R.id.InfoTekst);
         Info.setText("Start spil ved skrive ét bogstav og tryk dernæst gæt");
         Info.setTextColor(Color.parseColor("#ff0000ff"));
 
+        Info2 = (TextView) findViewById(R.id.textView2);
+        Info2.setText("Se statistik, hvis du vil se hvor mange gange du har spillet");
+        Info2.setTextColor(Color.parseColor("#ff0000ff"));
 
         Play = (Button) findViewById(R.id.button);
         Play.setText("Gæt");
@@ -56,8 +63,8 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         HelpText.setTextColor(Color.parseColor("#ff0000ff"));
 
 
-        TextInsert = (EditText) findViewById(R.id.editText);
-        TextInsert.setTextColor(Color.parseColor("#ff0000ff"));
+        Textedit = (EditText) findViewById(R.id.editText);
+        Textedit.setTextColor(Color.parseColor("#ff0000ff"));
 
 
         imagestatus = (ImageView) findViewById(R.id.imageView);
@@ -66,7 +73,7 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         Nytspil.setOnClickListener(this);
         Info.setOnClickListener(this);
         Play.setOnClickListener(this);
-        TextInsert.setOnClickListener(this);
+        Textedit.setOnClickListener(this);
         HelpText.setOnClickListener(this);
 
         //sætter bagrundsfarve
@@ -87,8 +94,9 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         new AsyncTask() {
             @Override
             protected Object doInBackground(Object... arg0) {
-                try {galgelogik.hentOrdFraDr();
-                    return "Ordene hentet fra DRs Server";
+                try {logik.hentOrdFraDr();
+                    opdaterSkærm();
+                    return "Ordene blev hentet fra DRs Server";
                 } catch (Exception e) {
                     //System.out.print(StackTraceElement.class);
                     return "Ordene blev ikke hentet korrekt";
@@ -107,17 +115,17 @@ public class GameLaunch extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == Play) {
-            String bogstav = TextInsert.getText().toString();
+            String bogstav   = Textedit.getText().toString();
             if (bogstav.length() != 1) {
-                TextInsert.setError("Skriv præcis ét bogstav");
+                Textedit.setError("Skriv præcis ét bogstav");
                 return;
             }
             logik.gætBogstav(bogstav);
-            TextInsert.setText("");
-            TextInsert.setError(null);
+            Textedit.setText("");
+            Textedit.setError(null);
             imagecheck();
             opdaterSkærm();
-            System.out.println(galgelogik.getOrdet());
+            System.out.println(logik.getOrdet());
         }
 
         else if (v == HelpText) {
@@ -125,9 +133,10 @@ public class GameLaunch extends Activity implements View.OnClickListener {
             startActivity(i);
         }
         else if (v == Nytspil) {
-            getAsyncWords();
             logik.nulstil();
+            getAsyncWords();
             opdaterSkærm();
+            Info2.setText("Se statistik, hvis du vil se hvor mange gange du har spillet");
 
         }
     }
@@ -140,7 +149,8 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         }
 
         if (logik.erSpilletVundet()) {
-            Info.append("\nDu har vundet");
+            Info.setText("Du har vundet");
+            Info2.setText("Vælg nyt spil for at prøve igen");
 
         }
     }
