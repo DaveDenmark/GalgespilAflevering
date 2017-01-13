@@ -9,8 +9,8 @@ import android.webkit.WebViewClient;
 import com.example.id.galgespilaflevering.R;
 
 public class HelpView extends Activity {
-        TextView textView;
-        WebView MywebView, w1;
+    TextView textView;
+    WebView MywebView, w1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

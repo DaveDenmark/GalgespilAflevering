@@ -1,7 +1,7 @@
 package com.example.id.galgespilaflevering.Activities;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.app.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,14 +17,13 @@ import com.example.id.galgespilaflevering.R;
 import com.example.id.galgespilaflevering.logik.Galgelogik;
 
 public class GameLaunch extends Activity implements View.OnClickListener {
-
     Galgelogik logik = new Galgelogik();
     private TextView Info, Info2;
-    private Button Play, HelpText, Nytspil;
+    private Button Play, HelpText, Nytspil, ordfraliste;
     private EditText Textedit;
     private ImageView imagestatus;
     ProgressDialog pd;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +69,7 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         imagestatus = (ImageView) findViewById(R.id.imageView);
         imagestatus.setImageResource(R.drawable.galge);
 
+        //Sætter onClicks
         Nytspil.setOnClickListener(this);
         Info.setOnClickListener(this);
         Play.setOnClickListener(this);
@@ -89,6 +89,7 @@ public class GameLaunch extends Activity implements View.OnClickListener {
         finish();
     }
 
+    //Async som kører hentOrdFraDr metoden som erstatter ens array af ord
     public void getAsyncWords() {
         pd = ProgressDialog.show(this, "Vent", "Et øjeblik, henter data...");
         new AsyncTask() {
@@ -112,6 +113,7 @@ public class GameLaunch extends Activity implements View.OnClickListener {
 
         } .execute();
     }
+    //
     @Override
     public void onClick(View v) {
         if (v == Play) {
@@ -133,6 +135,7 @@ public class GameLaunch extends Activity implements View.OnClickListener {
             startActivity(i);
         }
         else if (v == Nytspil) {
+            showDialog();
             logik.nulstil();
             getAsyncWords();
             opdaterSkærm();
@@ -174,4 +177,26 @@ public class GameLaunch extends Activity implements View.OnClickListener {
             imagestatus.setImageResource(R.drawable.forkert6);
     }
 
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Hvordan vil du finde dit ord?")
+                .setCancelable(true)
+                .setPositiveButton("Vælg ord fra liste", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        GoToDr();
+                    }
+                })
+                .setNegativeButton("Tilfældigt ord", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
+    //Skifter aktivitet til GoToDr
+    public void GoToDr() {
+        Intent i = new Intent(this, android.app.ListActivity.class);
+        startActivity(i);
+    }
+}

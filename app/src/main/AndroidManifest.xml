@@ -36,9 +36,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".logik.AsyncExample" />
         <activity android:name=".Activities.Preference" />
-        <activity android:name=".Activities.Score"></activity>
+        <activity android:name=".Activities.ListFruitActivity" />
+        <activity android:name=".Activities.ListMobileActivity" />
+        <activity android:name=".Activities.ListActivity"></activity>
     </application>
 
 </manifest>

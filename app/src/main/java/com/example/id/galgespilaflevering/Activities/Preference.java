@@ -14,28 +14,28 @@ public class Preference extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference);
 
-    // Get the app's shared preferences
-    SharedPreferences app_preferences =
-            PreferenceManager.getDefaultSharedPreferences(this);
+        // Get the app's shared preferences
+        SharedPreferences app_preferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
 
-    // Get the value for the run counter
+        // Get the value for the run counter
 
         int counter = app_preferences.getInt("counter", 0);
         int intValue = app_preferences.getInt("intValue",0);
 
-    // Update the TextView
-    TextView text = (TextView) findViewById(R.id.text);
-    text.setText("Du har åbnet indstillinger "+counter+" gange.");
+        // Update the TextView
+        TextView text = (TextView) findViewById(R.id.text);
+        text.setText("Du har åbnet indstillinger "+counter+" gange.");
 
 
-    TextView text2 = (TextView) findViewById(R.id.text2);
-    text2.setText("Du har spillet spillet "+intValue+" gange.");
+        TextView text2 = (TextView) findViewById(R.id.text2);
+        text2.setText("Du har spillet spillet "+intValue+" gange.");
 
-    // Increment the counter
-    SharedPreferences.Editor editor = app_preferences.edit();
+        // Increment the counter
+        SharedPreferences.Editor editor = app_preferences.edit();
         editor.putInt("counter", ++counter);
-    editor.commit();
+        editor.commit();
 
-}
+    }
 
 }
